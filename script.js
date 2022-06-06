@@ -35,10 +35,16 @@ function operator(e){
         flag = op;
         return;
     }
-    flag = op;
-    operand1 = parseFloat(mainD.textContent);
-    topD.textContent = mainD.textContent + ' ' + op;
-    mainD.textContent = '';
+    if(op === '-' && !mainD.textContent){
+        mainD.textContent = op;
+        return;
+    }
+    if(mainD.textContent){
+        flag = op;
+        operand1 = parseFloat(mainD.textContent);
+        topD.textContent = mainD.textContent + ' ' + op;
+        mainD.textContent = '';
+    }
 }
 
 // function to handle the event when user clicks "=" button
@@ -96,7 +102,7 @@ for(button of buttons){
     }
     else{
         button.addEventListener('click',(e)=> {
-            if((mainD.textContent && isNaN(parseFloat(mainD.textContent)))||reset){
+            if((mainD.textContent && mainD.textContent!=='-' && isNaN(parseFloat(mainD.textContent)))||reset){
                 mainD.textContent = '';
                 operand1 =null;
                 operand2 = null;
@@ -111,20 +117,23 @@ for(button of buttons){
 // event listener for  handling keyboard inputs
 window.addEventListener('keydown', handleKeyboard);
 
+// this function is same as the for loop body above with some small changes
 function handleKeyboard(e){
-    console.log(typeof(e.code))
     if(e.key in mathObj){
         operator(e);
     }
-    else if(e.key === '='||'Enter'){
+    else if(e.key === '='||e.key === 'Enter'){
         equals();
-        
     }
     else if(e.key === 'Backspace'){
         if(!mainD.textContent){return;}
         mainD.textContent = mainD.textContent.slice(0,-1);
     }
     else if(e.key>='0' && e.key<='9'){
+        if(mainD.textContent === '-'){
+            mainD.textContent = mainD.textContent + e.key;
+            return;
+        }
         if((mainD.textContent && isNaN(parseFloat(mainD.textContent)))||reset){
             mainD.textContent = '';
             operand1 =null;
