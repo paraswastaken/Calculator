@@ -1,9 +1,9 @@
 // object for identifying operator and performing corresponding opration
 let mathObj = {
-    '+': (x, y)=>x+y,
-    '-': (x, y)=>x-y,
-    '*': (x, y)=>x*y,
-    '/': (x, y)=>x/y,
+    '+': (x, y)=>(x)+(y),
+    '-': (x, y)=>(x)-(y),
+    '*': (x, y)=>(x)*(y),
+    '/': (x, y)=>(x)/(y),
 }
 
 // initialising all needed variables
@@ -35,11 +35,16 @@ function operator(e){
         flag = op;
         return;
     }
-    if(op === '-' && !mainD.textContent){
+    else if(operand1!==null && !mainD.textContent){
+        flag = op;
+        topD.textContent = topD.textContent.slice(0, -1)  + op;
+        return;
+    }
+    else if(op === '-' && !mainD.textContent){
         mainD.textContent = op;
         return;
     }
-    if(mainD.textContent){
+    else if(mainD.textContent){
         flag = op;
         operand1 = parseFloat(mainD.textContent);
         topD.textContent = mainD.textContent + ' ' + op;
@@ -55,7 +60,7 @@ function equals(){
     if(operand1===null || operand2===null){
         return;
     }
-    topD.textContent = '';
+    topD.textContent = topD.textContent + ' ' + mainD.textContent;
     if(operate(operand1, operand2) === Infinity){
         mainD.textContent = "You Can't Divide By Zero";
         return;
@@ -103,6 +108,7 @@ for(button of buttons){
     else{
         button.addEventListener('click',(e)=> {
             if((mainD.textContent && mainD.textContent!=='-' && isNaN(parseFloat(mainD.textContent)))||reset){
+                topD.textContent = '';
                 mainD.textContent = '';
                 operand1 =null;
                 operand2 = null;
@@ -135,6 +141,7 @@ function handleKeyboard(e){
             return;
         }
         if((mainD.textContent && isNaN(parseFloat(mainD.textContent)))||reset){
+            topD.textContent = '';
             mainD.textContent = '';
             operand1 =null;
             operand2 = null;
