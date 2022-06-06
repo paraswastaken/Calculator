@@ -20,6 +20,12 @@ body {
     gap: 5px;
 }
 
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
 .r1, .r2, .r3, .r4 {
     gap: 5px;
     display: flex;
@@ -28,7 +34,16 @@ body {
 button {
     min-width: 75px;
     min-height: 75px;
-    font-size: large;
+    font-size: 24px;
+}
+
+.topbuttons {
+    display: flex;
+    gap: 5px;
+}
+
+.allClear, .delete {
+    flex: 1;
 }
 
 .disp {
