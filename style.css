@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 10%;
+    width: min-content;
+    gap: 10px;
+    background-color: rgb(236, 200, 158);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.r1, .r2, .r3, .r4 {
+    gap: 5px;
+    display: flex;
+}
+
+button {
+    min-width: 75px;
+    min-height: 75px;
+    font-size: large;
+}
+
+.disp {
+    min-height: 80px;
+    border-radius: 10px;
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+}
+
+.mainDisp {
+    flex: 5 1 0;
+    background-color: aliceblue;
+}
+
+.prevInput {
+    flex: 3 1 0;
+}
