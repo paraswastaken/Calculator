@@ -35,6 +35,7 @@ button {
     min-width: 75px;
     min-height: 75px;
     font-size: 24px;
+    /* border-width: 2px; */
 }
 
 .topbuttons {
