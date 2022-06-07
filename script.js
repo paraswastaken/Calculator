@@ -10,7 +10,8 @@ let mathObj = {
 // initialising all needed variables
 let flag=null; // to keep track of current oprator
 let operand1=null, operand2=null;
-let reset=false, deci=false; // to keep track of when to reset the calculator after any calculation
+let reset=false; // to keep track of when to reset the calculator after any calculation
+let deci=false; //*deci* is there to keep track of decimal in operands(max 1)
 
 // query selecting displays
 const mainD = document.querySelector(".mainDisp");
@@ -34,15 +35,13 @@ function operator(e){
         operand2 = null;
         mainD.textContent = '';
         flag = op;
+        deci=false
         return;
     }
     else if(operand1!==null && !mainD.textContent){
         flag = op;
         topD.textContent = topD.textContent.slice(0, -1)  + op;
-        return;
-    }
-    else if(op === '-' && !mainD.textContent){
-        mainD.textContent = op;
+        deci=false;
         return;
     }
     else if(mainD.textContent){
@@ -50,6 +49,7 @@ function operator(e){
         operand1 = parseFloat(mainD.textContent);
         topD.textContent = mainD.textContent + ' ' + op;
         mainD.textContent = '';
+        deci=false;
     }
 }
 
@@ -100,11 +100,15 @@ for(button of buttons){
             flag = null;
         })
     }
-    else if(button.textContent === 'Delete'){
+    else if(button.textContent === 'Del'){
         button.addEventListener('click', ()=>{
             if(!mainD.textContent){return;}
             mainD.textContent = mainD.textContent.slice(0,-1);
         })
+    }
+    else if(button.textContent === '.' && !deci){
+        mainD.textContent = mainD.textContent + e.target.textContent;
+        deci=true;
     }
     else{
         button.addEventListener('click',(e)=> {
@@ -136,7 +140,11 @@ function handleKeyboard(e){
         if(!mainD.textContent){return;}
         mainD.textContent = mainD.textContent.slice(0,-1);
     }
-    else if((e.key>='0' && e.key<='9')||e.key==='.'){
+    else if(e.key === '.' && !deci){
+        mainD.textContent = mainD.textContent + e.target.textContent;
+        deci=true;
+    }
+    else if(e.key>='0' && e.key<='9'){
         if(mainD.textContent === '-'){
             mainD.textContent = mainD.textContent + e.key;
             return;
