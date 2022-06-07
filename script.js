@@ -141,6 +141,7 @@ window.addEventListener('keydown', handleKeyboard);
 
 // this function is same as the for loop body above with some small changes
 function handleKeyboard(e){
+    console.log(e);
     if(e.key in mathObj){
         operator(e);
     }
@@ -151,8 +152,9 @@ function handleKeyboard(e){
         if(!mainD.textContent){return;}
         mainD.textContent = mainD.textContent.slice(0,-1);
     }
-    else if(e.key === '.' && !deci){
-        mainD.textContent = mainD.textContent + e.target.textContent;
+    else if(e.key === '.'){
+        if(deci) return;
+        mainD.textContent = mainD.textContent + e.key;
         deci=true;
     }
     else if(e.key>='0' && e.key<='9'){
