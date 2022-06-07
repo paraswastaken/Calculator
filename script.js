@@ -4,12 +4,13 @@ let mathObj = {
     '-': (x, y)=>(x)-(y),
     '*': (x, y)=>(x)*(y),
     '/': (x, y)=>(x)/(y),
+    '%': (x, y)=>(x)%(y)
 }
 
 // initialising all needed variables
 let flag=null; // to keep track of current oprator
 let operand1=null, operand2=null;
-let reset=false; // to keep track of when to reset the calculator after any calculation
+let reset=false, deci=false; // to keep track of when to reset the calculator after any calculation
 
 // query selecting displays
 const mainD = document.querySelector(".mainDisp");
@@ -135,7 +136,7 @@ function handleKeyboard(e){
         if(!mainD.textContent){return;}
         mainD.textContent = mainD.textContent.slice(0,-1);
     }
-    else if(e.key>='0' && e.key<='9'){
+    else if((e.key>='0' && e.key<='9')||e.key==='.'){
         if(mainD.textContent === '-'){
             mainD.textContent = mainD.textContent + e.key;
             return;

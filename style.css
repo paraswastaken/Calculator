@@ -17,7 +17,7 @@ body {
     display: flex;
     flex-direction: column;
     margin: auto;
-    margin-top: 7%;
+    margin-top: 5%;
     width: min-content;
     gap: 10px;
     background-color: #BBE1FA;
@@ -43,6 +43,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    padding-top: 20px;
 }
 
 .r1, .r2, .r3, .r4 {
@@ -76,14 +77,13 @@ button:active {
 }
 
 .allClear, .delete {
-    flex: 1;
-    min-height: 60px;
-    border-radius: 10px;
     background-color: #F32424;
 }
 
 .equals {
     background-color: #3282b8;
+    flex: 1;
+    border-radius: 40px;
 }
 
 .disp {
@@ -122,6 +122,6 @@ a {
     color: #FC5185;
 }
 
-.sum, .dif, .product, .div {
-    background-color: #FF8D29;
+.sum, .dif, .product, .div, .mod {
+    background-color: #354259;
 }
