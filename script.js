@@ -123,14 +123,13 @@ for(button of buttons){
     }
     else{
         button.addEventListener('click',(e)=> {
-            if((mainD.textContent && mainD.textContent!=='-' && isNaN(parseFloat(mainD.textContent)))||reset){
+            if((mainD.textContent && mainD.textContent!=='-' && mainD.textContent !== '.' && isNaN(parseFloat(mainD.textContent)))||reset){
                 topD.textContent = '';
                 mainD.textContent = '';
                 operand1 =null;
                 operand2 = null;
                 flag = null;
                 reset = false;
-                deci=false;
             }
             mainD.textContent = mainD.textContent + e.target.textContent;
         });
