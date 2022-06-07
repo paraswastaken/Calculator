@@ -130,6 +130,7 @@ for(button of buttons){
                 operand2 = null;
                 flag = null;
                 reset = false;
+                deci=false;
             }
             mainD.textContent = mainD.textContent + e.target.textContent;
         });
