@@ -77,7 +77,7 @@ function equals(){
 // function for performing arithmetic operation when certain criterion is met
 // those certain criteria are checked in *operator* and *equals* functions
 function operate(a, b){
-    return mathObj[flag](a, b)
+    return parseFloat(mathObj[flag](a, b).toFixed(5));
 }
 
 function allClear(){
