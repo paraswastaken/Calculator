@@ -2,6 +2,7 @@
 let mathObj = {
     '+': (x, y)=>(x)+(y),
     '-': (x, y)=>(x)-(y),
+    'x': (x, y)=>(x)*(y),
     '*': (x, y)=>(x)*(y),
     '/': (x, y)=>(x)/(y),
     '%': (x, y)=>(x)%(y)
@@ -35,7 +36,7 @@ function operator(e){
         operand2 = null;
         mainD.textContent = '';
         flag = op;
-        deci=false
+        deci=false;
         return;
     }
     else if(operand1!==null && !mainD.textContent){
@@ -79,6 +80,14 @@ function operate(a, b){
     return mathObj[flag](a, b)
 }
 
+function allClear(){
+    mainD.textContent = '';
+    topD.textContent = '';
+    operand1 =null;
+    operand2 = null;
+    flag = null;
+}
+
 // query selecting all clickable buttons on page
 const buttons = document.querySelectorAll("button");
 
@@ -92,23 +101,25 @@ for(button of buttons){
         button.addEventListener('click', equals);
     }
     else if(button.textContent === 'AC'){
-        button.addEventListener('click', ()=>{
-            mainD.textContent = '';
-            topD.textContent = '';
-            operand1 =null;
-            operand2 = null;
-            flag = null;
-        })
+        button.addEventListener('click', allClear)
     }
     else if(button.textContent === 'Del'){
         button.addEventListener('click', ()=>{
-            if(!mainD.textContent){return;}
+            if(reset){
+                allClear();
+                reset=false;
+                return;
+            }
+            else if(!mainD.textContent){return;}
             mainD.textContent = mainD.textContent.slice(0,-1);
         })
     }
-    else if(button.textContent === '.' && !deci){
-        mainD.textContent = mainD.textContent + e.target.textContent;
-        deci=true;
+    else if(button.textContent === '.'){
+        button.addEventListener('click', (e)=>{
+            if(deci) return;
+            mainD.textContent = mainD.textContent + e.target.textContent;
+            deci=true;
+        });
     }
     else{
         button.addEventListener('click',(e)=> {
