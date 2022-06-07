@@ -13,7 +13,7 @@ body {
     display: flex;
     flex-direction: column;
     margin: auto;
-    margin-top: 10%;
+    margin-top: 7%;
     width: min-content;
     gap: 10px;
     background-color: rgb(236, 200, 158);
@@ -85,4 +85,5 @@ button {
 
 a {
     text-decoration: none;
+    color: aquamarine;
 }
