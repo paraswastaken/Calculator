@@ -48,7 +48,7 @@ function operator(e){
     else if(mainD.textContent){
         flag = op;
         operand1 = parseFloat(mainD.textContent);
-        topD.textContent = mainD.textContent + ' ' + op;
+        topD.textContent = `${parseFloat(mainD.textContent)}` + ' ' + op;
         mainD.textContent = '';
         deci=false;
     }
@@ -72,6 +72,7 @@ function equals(){
     operand2 = null;
     flag = null;
     reset = true;
+    deci = true;
 }
 
 // function for performing arithmetic operation when certain criterion is met
@@ -86,6 +87,7 @@ function allClear(){
     operand1 =null;
     operand2 = null;
     flag = null;
+    deci = false;
 }
 
 // query selecting all clickable buttons on page
