@@ -1,4 +1,4 @@
-// object for identifying operator and performing corresponding opration
+// object for identifying operator and performing corresponding operation
 let mathObj = {
     '+': (x, y)=>(x)+(y),
     '-': (x, y)=>(x)-(y),
